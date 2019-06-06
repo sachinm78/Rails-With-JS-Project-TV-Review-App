@@ -6,12 +6,16 @@ class ShowsController < ApplicationController
 
     def new
         @show = Show.new
+        @user = current_user
     end
 
     def create
-        @show = Show.create(show_params)
-        if @show
-            redirect_to user_show_path(@show)
+        @show = Show.new(show_params)
+        user = User.find_by(id: params[:user_id])
+        @user = (user == current_user ? user : current_user)
+        if @show.save
+            @show.reviews.create(user_id: @user.id)    
+            redirect_to user_show_path(@user, @show)
         else
             render :new
         end
@@ -23,10 +27,14 @@ class ShowsController < ApplicationController
 
     def edit
         @show = Show.find_by(id: params[:id])
+        user = User.find_by(id: params[:user_id])
+        @user = (user == current_user ? user : current_user)
     end
 
     def update
         @show.update(show_params)
+        user = User.find_by(id: params[:user_id])
+        @user = (user == current_user ? user : current_user)
         if @show.save
             redirect_to user_show_path(@show)
         else
@@ -35,9 +43,11 @@ class ShowsController < ApplicationController
     end
 
     def destroy
-        @show = Show.find_by(id: params[:id])
-        @show.destroy
-        redirect_to user_show_path
+        user = User.find_by(id: params[:user_id])
+            if user == current_user
+                user.shows.find_by(id: params[:id]).destroy
+            end
+        redirect_to user_shows_path 
     end
 
 private

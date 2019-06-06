@@ -1,4 +1,4 @@
-<%= form_for @show do |f| %>
+<%= form_for [user, show] do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %><br />
     <%= f.label :genre %>
