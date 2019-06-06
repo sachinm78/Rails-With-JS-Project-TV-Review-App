@@ -4,7 +4,6 @@
 
 <ul>
     <li><%= link_to "Your Shows", user_shows_path(@user) %></li>
-    <li>Add a New Show</li>
-    <li>Your Reviews</li>
-    <%# <l1><li><%= link_to "Add a new show", new_user_show_path %>
+    <li><%= link_to "Add a New Show", new_user_show_path(@user) %></li>
+    <li><%= link_to "Your Reviews", reviews_path %></li>
 </ul>
