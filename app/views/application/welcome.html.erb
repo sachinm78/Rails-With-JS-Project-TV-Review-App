@@ -1,1 +1,10 @@
-<h1>Welcome!</h1>
+<h1>Welcome, <%= current_user.username %>!</h1>
+
+<p>Please select an option from the list.</p>
+
+<ul>
+    <li>Your Shows</li>
+    <li>Add a new show</li>
+    <li>Your Reviews</li>
+    <%# <l1><li><%= link_to "Add a new show", new_user_show_path %>
+</ul>
