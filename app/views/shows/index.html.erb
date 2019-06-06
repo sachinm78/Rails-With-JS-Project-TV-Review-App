@@ -6,7 +6,7 @@
 </ul>
 
 <ol>
-    <% @shows.each do |show| %>
+    <% @user.shows.each do |show| %>
         <li><%= show.title %> - <%= show.genre %></li>
         </br>
     <% end %>
