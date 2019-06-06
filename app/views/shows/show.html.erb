@@ -1,4 +1,11 @@
-<h1>Current Show</h1>
+<h1><%= @show.title %> - <%= @show.genre %></h1>
 
+<ul>
+    <li>Edit</li>
+    <li>Add A Review</li>
+</ul>
 
-Add A Review
+<ul>
+    <li><%= link_to "Your Shows", user_shows_path(@user) %></li>
+    <li><%= link_to "Your Reviews", reviews_path %></li>
+</ul>
