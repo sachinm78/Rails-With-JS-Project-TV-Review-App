@@ -37,7 +37,7 @@ class ShowsController < ApplicationController
     def destroy
         @show = Show.find_by(id: params[:id])
         @show.destroy
-        redirect_to user_shows_path
+        redirect_to user_show_path
     end
 
 private
