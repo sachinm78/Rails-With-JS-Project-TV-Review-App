@@ -11,7 +11,7 @@ class ShowsController < ApplicationController
     def create
         @show = Show.create(show_params)
         if @show
-            redirect_to show_path(@show)
+            redirect_to user_show_path(@show)
         else
             render :new
         end
@@ -22,15 +22,22 @@ class ShowsController < ApplicationController
     end
 
     def edit
+        @show = Show.find_by(id: params[:id])
     end
 
     def update
         @show.update(show_params)
         if @show.save
-            redirect_to show_path(@show)
+            redirect_to user_show_path(@show)
         else
             render :edit
         end
+    end
+
+    def destroy
+        @show = Show.find_by(id: params[:id])
+        @show.destroy
+        redirect_to user_shows_path
     end
 
 private
