@@ -35,6 +35,7 @@ class ShowsController < ApplicationController
     end
 
     def update
+        @show = Show.find_by(id: params[:id])
         @show.update(show_params)
         user = User.find_by(id: params[:user_id])
         @user = (user == current_user ? user : current_user)
