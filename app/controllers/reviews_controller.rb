@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
     end
 
     def new
-        @review = review.new
+        @review = Review.new
     end
 
     def create

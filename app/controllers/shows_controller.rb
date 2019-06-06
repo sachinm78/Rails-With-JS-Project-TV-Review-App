@@ -5,7 +5,7 @@ class ShowsController < ApplicationController
     end
 
     def new
-        @show = show.new
+        @show = Show.new
     end
 
     def create
