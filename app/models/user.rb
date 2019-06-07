@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :reviews
   has_many :shows, through: :reviews
+  validates :username, :email, :password, presence: true
+  validates :username, uniqueness: true
 end
