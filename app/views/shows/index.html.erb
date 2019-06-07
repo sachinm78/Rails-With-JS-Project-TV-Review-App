@@ -7,7 +7,8 @@
 
 <ol>
     <% @user.shows.each do |show| %>
-        <li><%= show.title %> - <%= show.genre %> - <%= show.review.rating %> </li>
+    
+        <li><%= show.title %> - <%= show.genre %> - <%= show.reviews.first.rating %> - <%= show.reviews.first.comment %></li>
         </br>
     <% end %>
 </ol>
