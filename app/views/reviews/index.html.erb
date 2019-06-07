@@ -1,1 +1,13 @@
-<h1>Reviews Index</h1>
+<h1><%= current_user.username %>'s Reviews Index</h1>
+<ul>
+    <li><%= link_to "Your Shows", user_shows_path(@user) %></li>
+    <li><%= link_to "Add a New Show", new_user_show_path(@user) %></li>
+</ul>
+
+<ol>
+    <% @show.reviews.each do |review| %>
+        <li><%= review.rating %> - <%= review.comment %></li>
+        </br>
+    <% end %>
+</ol>
+

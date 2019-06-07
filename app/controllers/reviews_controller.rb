@@ -2,19 +2,16 @@ class ReviewsController < ApplicationController
     before_action :authenticate_user!
     
     def index
+        @user = current_user
         @reviews = Review.all
     end
 
-    def new
-        @review = Review.new
-    end
-
     def create
-        @review = Review.create(review_params)
+        @review = Review.create(user_id: current_user.id, shown_id: params[:show_id])
         if @review
             redirect_to reviews_path(@review)
         else
-            render :new
+            render :show
         end
     end
 
@@ -27,8 +24,9 @@ class ReviewsController < ApplicationController
     end
 
     def update
-        @review.update(review_params)
-        if @review.save
+        if user_id == current_user.id
+            @review.update(user_id: current_user.id, shown_id: params[:show_id])
+            @review.save
             redirect_to reviews_path(@review)
         else
             render :edit
@@ -39,12 +37,6 @@ class ReviewsController < ApplicationController
         @review = Review.find_by(id: params[:id])
         @review.destroy
         redirect_to reviews_path
-    end
-
-private
-    
-    def review_params
-        params.require(:review).permit(:rating, :comment)
     end
 
 end
