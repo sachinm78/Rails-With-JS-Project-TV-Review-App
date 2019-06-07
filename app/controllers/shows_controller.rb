@@ -4,6 +4,7 @@ class ShowsController < ApplicationController
     def index
         @shows = Show.all
         @user = current_user
+        @reviews = current_user.reviews
     end
 
     def new
