@@ -10,6 +10,9 @@ Devise.setup do |config|
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '5bf2f1e744fc3b8bab387a41a1b2aa153cb298ce03c68319ac6cba62a5a39b411f3f4116e66ac171fb6917271e880157c7c71a01210cd381c74c8703c8648dd2'
 
+  # ==> Omniauth
+  config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+  
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
