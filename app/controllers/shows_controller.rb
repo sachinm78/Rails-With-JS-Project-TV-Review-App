@@ -30,8 +30,10 @@ class ShowsController < ApplicationController
 
     def edit
         @show = Show.find_by(id: params[:id])
-        user = User.find_by(id: params[:user_id])
-        @user = (user == current_user ? user : current_user)
+        @user = User.find_by(id: params[:user_id])
+        if !@user.shows.include?(@show)
+            redirect_to user_shows_path(current_user)
+        end
     end
 
     def update

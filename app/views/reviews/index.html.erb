@@ -6,7 +6,8 @@
 
 <ol>
     <% @user.reviews.each do |review| %>
-        <li><%= review.rating %> - <%= review.comment %></li>
+    
+        <li><%= review.show.title %> <%= review.rating %> - <%= review.comment %></li>
         </br>
     <% end %>
 </ol>
