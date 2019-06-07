@@ -2,5 +2,5 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :show
 
-  validates :rating, :inclusion => { :in => 0..5 }
+  validates :rating, :numericality => { :less_than_or_equal_to => 5 }
 end
