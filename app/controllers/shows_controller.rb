@@ -54,6 +54,8 @@ class ShowsController < ApplicationController
         redirect_to user_shows_path 
     end
 
+     
+
 private
     
     def show_params
