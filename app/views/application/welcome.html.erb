@@ -7,3 +7,11 @@
     <li><%= link_to "Add a New Show", new_user_show_path(@user) %></li>
     <li><%= link_to "Your Reviews", reviews_path %></li>
 </ul>
+
+<h2>Shows Data Base</h2>
+<ul>
+    <% @shows.each do |show| %>
+        <li><%= show.title %> - <%= show.genre %></li>
+        </br>
+    <% end %>
+</ul>

@@ -3,5 +3,6 @@ class ApplicationController < ActionController::Base
     
     def welcome
         @user = current_user
+        @shows = Show.all
     end
 end
