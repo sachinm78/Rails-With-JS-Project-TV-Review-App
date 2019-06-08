@@ -30,22 +30,11 @@ class ReviewsController < ApplicationController
         @review.update(review_params)
         redirect_to reviews_path(@review)
     end
-
-    def destroy
-        @review = Review.find_by(id: params[:id])
-        @review.destroy
-        redirect_to reviews_path
-    end
-
+    
 private
 
     def review_params
         params.require(:review).permit(:rating, :comment)
     end
-
-    # def default_values
-    #     self.rating = 0 if self.rating.nil?
-    #     self.comment = "blank" if self.comment.nil?
-    # end
 
 end

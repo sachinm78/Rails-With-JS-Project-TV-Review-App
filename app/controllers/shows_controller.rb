@@ -53,25 +53,24 @@ class ShowsController < ApplicationController
     end
 
     def destroy
-        user = User.find_by(id: params[:user_id])
-            if user == current_user
-                user.shows.find_by(id: params[:id]).destroy
-            end
+        @show.find_by(id: params[:id])
+        @show.destroy
+
         redirect_to user_shows_path 
     end
 
-     
+    def find_user
+
+    end
+
+    def find_show
+
+    end
 
 private
     
     def show_params
         params.require(:show).permit(:title, :genre)
     end
-    
-    # def default_values
-    #     binding.pry
-    #     self.reviews.rating = 0 if self.rating.nil?
-    #     self.reviews.comment = "blank" if self.comment.nil?
-    # end
     
 end
