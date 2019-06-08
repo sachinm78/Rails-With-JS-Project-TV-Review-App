@@ -18,7 +18,7 @@ class ShowsController < ApplicationController
         @user = (user == current_user ? user : current_user)
         if @show.save
             @show.reviews.create(user_id: @user.id)    
-            redirect_to user_show_path(@user, @show)
+            redirect_to edit_review_path(@show)
         else
             render :new
         end

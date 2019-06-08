@@ -6,8 +6,13 @@ class ReviewsController < ApplicationController
         @reviews = Review.all
     end
 
-    def show
-        @review = Review.find_by(id: params[:id])
+    def create
+        @review = Review.create(user_id: current_user.id, shown_id: params[:show_id])
+        if @review
+            redirect_to reviews_path(@review)
+        else
+            render :show
+        end
     end
 
     def edit
