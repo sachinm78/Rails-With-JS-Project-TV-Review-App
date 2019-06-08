@@ -1,6 +1,6 @@
 class ShowsController < ApplicationController
     before_action :authenticate_user!
-    
+
     def index
         @shows = Show.all
         @user = current_user
@@ -16,9 +16,11 @@ class ShowsController < ApplicationController
         @show = Show.new(show_params)
         user = User.find_by(id: params[:user_id])
         @user = (user == current_user ? user : current_user)
+        @show.save    
         if @show.save
-            @show.reviews.create(user_id: @user.id)    
-            redirect_to edit_review_path(@show)
+            # binding.pry
+            @show.reviews.create(user_id: @user.id)
+            redirect_to user_show_path(@user, @show)
         else
             render :new
         end
@@ -65,5 +67,11 @@ private
     def show_params
         params.require(:show).permit(:title, :genre)
     end
+    
+    # def default_values
+    #     binding.pry
+    #     self.reviews.rating = 0 if self.rating.nil?
+    #     self.reviews.comment = "blank" if self.comment.nil?
+    # end
     
 end

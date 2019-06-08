@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
     before_action :authenticate_user!
     
+  
     def index
         @user = current_user
         @reviews = Review.all
@@ -42,5 +43,9 @@ private
         params.require(:review).permit(:rating, :comment)
     end
 
+    # def default_values
+    #     self.rating = 0 if self.rating.nil?
+    #     self.comment = "blank" if self.comment.nil?
+    # end
 
 end
