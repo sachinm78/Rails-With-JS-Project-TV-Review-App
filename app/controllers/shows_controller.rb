@@ -27,6 +27,7 @@ class ShowsController < ApplicationController
     def show
         @show = Show.find_by(id: params[:id])
         @user = current_user
+        @reviews = current_user.reviews
     end
 
     def edit

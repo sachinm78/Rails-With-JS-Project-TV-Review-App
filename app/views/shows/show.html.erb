@@ -1,9 +1,7 @@
-<h1><%= @show.title %> - <%= @show.genre %></h1>
-
-<ul>
-    <li>Edit</li>
-    <li>Add A Review</li>
-</ul>
+<h1>Title: <%= @show.title %></h1>
+<h3>Genre: <%= @show.genre %></h3> 
+<h3>Rating: <%= @show.reviews.first.rating %></h3>
+<h3>Comment: <%= @show.reviews.first.comment %></h3>
 
 <ul>
     <li><%= link_to "Your Shows", user_shows_path(@user) %></li>
