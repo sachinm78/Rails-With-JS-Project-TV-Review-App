@@ -10,7 +10,8 @@
     
         <li><%= show.title %> - <%= show.genre %> - <%= show.reviews.first.rating %> - <%= show.reviews.first.comment %>
         <%= link_to "Edit This Show", edit_user_show_path(@user, show) %>
-        </li>
+        <%= link_to 'Delete', user_show_path(@user, show), 
+            method: :delete, data: { confirm: 'Are you sure?' } %></li>
         </br>
     <% end %>
 </ol>

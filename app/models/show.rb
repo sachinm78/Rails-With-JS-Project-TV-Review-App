@@ -4,8 +4,4 @@ class Show < ApplicationRecord
 
     validates :title, :genre, presence: true
 
-    def status=(status)
-        status = 'P'
-        write_attribute(:status, status)
-    end
 end
