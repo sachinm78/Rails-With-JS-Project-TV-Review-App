@@ -18,7 +18,6 @@ class ReviewsController < ApplicationController
 
     def edit
         @review = Review.find_by(id: params[:id])
-        # @reviews = Review.all
         if current_user.reviews.include?(@review)
             render :edit
         else 
