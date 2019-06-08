@@ -4,7 +4,7 @@
   <%end%>
 <%end%>
 
-<%= form_for [@review] do |f| %>
+<%= form_for :review do |f| %>
     <%= f.label :rating %>
     <%= f.number_field :rating, {max: 5} %><br />
     <%= f.label :comment %>
