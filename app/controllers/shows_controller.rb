@@ -53,6 +53,7 @@ class ShowsController < ApplicationController
     end
 
     def destroy
+        @user = current_user
         @show.find_by(id: params[:id])
         @show.destroy
 

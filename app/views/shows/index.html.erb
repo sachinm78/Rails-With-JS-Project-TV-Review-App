@@ -8,10 +8,15 @@
 <ol>
     <% @user.shows.each do |show| %>
     
-        <li><%= show.title %> - <%= show.genre %> - <%= show.reviews.first.rating %> - <%= show.reviews.first.comment %>
-        <%= link_to "Edit This Show", edit_user_show_path(@user, show) %>
-        <%= link_to 'Delete', user_show_path(show), 
-            method: :delete, data: { confirm: 'Are you sure?' } %></li>
+        <li>
+            <b>Title:</b> <%= show.title %> 
+            <b>- Genre:</b> <%= show.genre %> 
+            <b>- Rating:</b> <%= show.reviews.first.rating %> 
+            <b>- Comment:</b> <%= show.reviews.first.comment %>
+            <%= link_to "Edit This Show", edit_user_show_path(@user, show) %>
+            <%= link_to 'Delete', user_show_path(@user, show), 
+            method: :delete, data: { confirm: 'Are you sure?' } %>
+        </li>
         </br>
     <% end %>
 </ol>

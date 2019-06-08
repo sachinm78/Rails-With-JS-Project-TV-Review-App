@@ -7,8 +7,13 @@
 <ol>
     <% @user.reviews.each do |review| %>
     
-        <li><%= review.show.title %> - <%= review.rating %> - <%= review.comment %>
-        <%= link_to "Edit This Review", edit_review_path(review) %></li>
+        <li>
+            <b>Title:</b> <%= review.show.title %>
+            <b> - Rating:</b> <%= review.rating %>
+            <b> - Comment:</b> <%= review.comment %>
+            <%= link_to "Edit This Review", 
+            edit_review_path(review) %>
+        </li>
         </br>
     <% end %>
 </ol>
