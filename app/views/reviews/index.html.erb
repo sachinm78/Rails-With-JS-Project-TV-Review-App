@@ -1,6 +1,7 @@
 <ul>
     <li><%= link_to "Your Shows", user_shows_path(@user) %></li>
     <li><%= link_to "Add a New Show", new_user_show_path(@user) %></li>
+    <li><%= link_to "Five Star - Not Rated Shows", custom_query_path %>
 </ul>
 
 <h1><%= current_user.username %>'s Reviews Index</h1>

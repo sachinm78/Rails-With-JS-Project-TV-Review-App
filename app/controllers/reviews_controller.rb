@@ -5,6 +5,8 @@ class ReviewsController < ApplicationController
     def index
         @user = current_user
         @reviews = Review.all
+        five_stars = @reviews.five_stars
+        not_rated = @reviews.not_rated
     end
 
     def create
@@ -32,13 +34,16 @@ class ReviewsController < ApplicationController
     end
 
     def show
+        custom_query
+        render :custom_query
+    end
+
+    def custom_query
         @user = current_user
         @reviews = Review.all
         five_stars = @reviews.five_stars
         not_rated = @reviews.not_rated
-        render :custom_query
-    end
-    
+    end    
       
 private
 

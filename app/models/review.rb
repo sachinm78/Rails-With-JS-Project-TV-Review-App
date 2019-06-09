@@ -9,7 +9,7 @@ class Review < ApplicationRecord
   end
 
   def self.not_rated
-    all.where("rating = ?", 0) 
+    all.where("comment = ?", "Add a comment.") 
   end
 
 end
