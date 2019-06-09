@@ -21,7 +21,7 @@
 <h1>These Shows Have Not Been Rated</h1>
 
 <ol>
-    <% @reviews.not_rated.each do |review| %>
+    <% @user.reviews.not_rated.each do |review| %>
         <li>
             <b>Title:</b> <%= review.show.title %>
             <b> - Rating:</b> <%= review.rating %>
