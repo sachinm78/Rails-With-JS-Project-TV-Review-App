@@ -32,6 +32,10 @@ class ReviewsController < ApplicationController
     end
 
     def show
+        @user = current_user
+        @reviews = Review.all
+        five_stars = @reviews.five_stars
+        not_rated = @reviews.not_rated
         render :custom_query
     end
     

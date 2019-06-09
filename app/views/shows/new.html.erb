@@ -1,8 +1,8 @@
-<h1>Add A New Show</h1>
-
-<%= render 'form', {:user => @user, :show => @show} %>
-
 <ul>
     <li><%= link_to "Your Shows", user_shows_path(@user) %></li>
     <li><%= link_to "Your Reviews", reviews_path %></li>
 </ul>
+
+<h1>Add A New Show</h1>
+
+<%= render 'form', {:user => @user, :show => @show} %>

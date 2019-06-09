@@ -8,10 +8,6 @@ class Review < ApplicationRecord
     all.where("rating = ?", 5)
   end
 
-  def self.four_stars
-    all.where("rating = ?", 4)
-  end
-
   def self.not_rated
     all.where("rating = ?", 0) 
   end
