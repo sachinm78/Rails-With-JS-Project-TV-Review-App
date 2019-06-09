@@ -14,11 +14,10 @@ class ShowsController < ApplicationController
 
     def create
         @show = Show.new(show_params)
-        user = User.find_by(id: params[:user_id])
-        @user = (user == current_user ? user : current_user)
+        find_user
+        @user = (@user == current_user ? @user : current_user)
         @show.save    
         if @show.save
-            # binding.pry
             @show.reviews.create(user_id: @user.id)
             redirect_to user_show_path(@user, @show)
         else
@@ -27,24 +26,24 @@ class ShowsController < ApplicationController
     end
 
     def show
-        @show = Show.find_by(id: params[:id])
+        find_show
         @user = current_user
         @reviews = current_user.reviews
     end
 
     def edit
-        @show = Show.find_by(id: params[:id])
-        @user = User.find_by(id: params[:user_id])
+        find_show
+        find_user
         if !@user.shows.include?(@show)
             redirect_to user_shows_path(current_user)
         end
     end
 
     def update
-        @show = Show.find_by(id: params[:id])
+        find_show
         @show.update(show_params)
-        user = User.find_by(id: params[:user_id])
-        @user = (user == current_user ? user : current_user)
+        find_user
+        @user = (@user == current_user ? @user : current_user)
         if @show.save
             redirect_to user_show_path(@show)
         else
@@ -54,17 +53,17 @@ class ShowsController < ApplicationController
 
     def destroy
         @user = current_user
-        @show = Show.find_by(id: params[:id]).destroy
+        find_show.destroy
         
         redirect_to user_shows_path 
     end
 
     def find_user
-
+        @user = User.find_by(id: params[:user_id])
     end
 
     def find_show
-
+        @show = Show.find_by(id: params[:id])
     end
 
 private
