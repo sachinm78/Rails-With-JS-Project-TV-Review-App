@@ -30,7 +30,12 @@ class ReviewsController < ApplicationController
         @review.update(review_params)
         redirect_to reviews_path(@review)
     end
+
+    def show
+        render :custom_query
+    end
     
+      
 private
 
     def review_params

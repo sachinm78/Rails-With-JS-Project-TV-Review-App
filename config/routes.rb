@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     resources :shows
   end
 
+  get '/custom_query', to: 'reviews#custom_query'
+
 end
