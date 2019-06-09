@@ -5,7 +5,7 @@
 <h1><%= current_user.username %>' 5-Star Reviews</h1>
 
 <ol>
-    <% @reviews.five_stars.each do |review| %>
+    <% @user.reviews.five_stars.each do |review| %>
         <li>
             <b>Title:</b> <%= review.show.title %>
             <b> - Rating:</b> <%= review.rating %>
