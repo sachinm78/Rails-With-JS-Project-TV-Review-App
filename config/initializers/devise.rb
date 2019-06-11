@@ -11,7 +11,7 @@ Devise.setup do |config|
   # config.secret_key = '5bf2f1e744fc3b8bab387a41a1b2aa153cb298ce03c68319ac6cba62a5a39b411f3f4116e66ac171fb6917271e880157c7c71a01210cd381c74c8703c8648dd2'
 
   # ==> Omniauth
-  config.omniauth :github, 'd162223ab3157ab64edc', '4a1071928a39872848d8c8bfc2ff50fc1c6b7e3c', scope: 'user:email'
+  config.omniauth :github, '9c28fa9867f7cd311bbb', '05935504c48d6d2315b39914136260668d1aa270', scope: 'user:email'
   
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
