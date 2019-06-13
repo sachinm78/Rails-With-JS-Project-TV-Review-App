@@ -3,10 +3,7 @@ class ReviewsController < ApplicationController
     
   
     def index
-        @user = current_user
-        @reviews = Review.all
-        five_stars = @reviews.five_stars
-        not_rated = @reviews.not_rated
+        special_index
     end
 
     def create
@@ -19,7 +16,7 @@ class ReviewsController < ApplicationController
     end
 
     def edit
-        @review = Review.find_by(id: params[:id])
+        find_review
         if current_user.reviews.include?(@review)
             render :edit
         else 
@@ -28,7 +25,7 @@ class ReviewsController < ApplicationController
     end
 
     def update
-        @review = Review.find_by(id: params[:id])
+        find_review
         @review.update(review_params)
         redirect_to reviews_path(@review)
     end
@@ -39,11 +36,19 @@ class ReviewsController < ApplicationController
     end
 
     def custom_query
+        special_index
+    end 
+    
+    def special_index
         @user = current_user
         @reviews = Review.all
         five_stars = @reviews.five_stars
         not_rated = @reviews.not_rated
-    end    
+    end
+
+    def find_review
+        @review = Review.find_by(id: params[:id])
+    end
       
 private
 
