@@ -1,5 +1,18 @@
 <h1>Welcome, <%= @user.username %>!</h1>
 
+<h3>Here is your highest-rated show!</h3>
+<ol>
+    <% @user.reviews.five_stars.limit(1).each do |review| %>
+        <li>
+            <b>Title:</b> <%= review.show.title %>
+            <b> - Rating:</b> <%= review.rating %>
+            <b> - Comment:</b> <%= review.comment %>
+            <%= link_to "Edit This Review", 
+            edit_review_path(review) %>
+        </li>
+        </br>
+    <% end %>
+</ol>
 <p>Please select an option from the list.</p>
 
 <ul>
