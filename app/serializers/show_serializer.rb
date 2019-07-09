@@ -3,6 +3,4 @@ class ShowSerializer < ActiveModel::Serializer
 
   has_many :reviews
   has_many :users, through: :reviews
-
-  root: 'application#welcome'
 end

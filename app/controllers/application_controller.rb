@@ -5,13 +5,10 @@ class ApplicationController < ActionController::Base
         @user = current_user
         @shows = Show.all
         @reviews = Review.all
-    end
-
-    def index
-        @shows = Show.all
         respond_to do |f|
-            f.html {render :root}
-            f.json {render json: @shows, serializer: ShowSerializer}
+            f.html {render :welcome}
+            f.json {render json: @shows, each_serializer: ShowSerializer, root: 'application#welcome'}
         end
     end
+
 end
