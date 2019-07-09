@@ -6,9 +6,12 @@ class ApplicationController < ActionController::Base
         @shows = Show.all
         @reviews = Review.all
     end
+
+    def index
+        @shows = Show.all
+        respond_to do |f|
+            f.html {render :root}
+            f.json {render json: @shows}
+        end
+    end
 end
-
-
-# add reviews to shows data base 
-# - <%= show.reviews.first.rating %> - <%= show.reviews.first.comment %>
-# works in pry but getting nilclass error on server
