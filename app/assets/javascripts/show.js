@@ -18,6 +18,9 @@ function getShows(){
         dataType: 'json'
     }).done(function (data) {
         console.log("the data is", data)
+        let firstShow = new Show(data[0])
+        let myShowHTML = firstShow.showHTML()
+        document.getElementById("ajax-index").innerHTML += myShowHTML
     })
 }
 
