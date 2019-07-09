@@ -16,8 +16,8 @@ function getShows(){
         url: 'http://localhost:3000/',
         method: 'get',
         dataType: 'json',
-    }).done(function (data){
-        console.log(data)
+    }).done(function (data) {
+        console.log("the data is", data)
     })
 }
 
