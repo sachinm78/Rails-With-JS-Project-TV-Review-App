@@ -15,7 +15,7 @@ function getShows(){
     $.ajax({
         url: 'http://localhost:3000/',
         method: 'get',
-        dataType: 'json',
+        dataType: 'json'
     }).done(function (data) {
         console.log("the data is", data)
     })

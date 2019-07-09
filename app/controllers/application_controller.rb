@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
         @shows = Show.all
         respond_to do |f|
             f.html {render :root}
-            f.json {render json: @shows}
+            f.json {render json: @shows, serializer: ShowSerializer}
         end
     end
 end
