@@ -1,8 +1,8 @@
 <h1>Welcome, <%= @user.username %>!</h1>
 
-<h3>Here is your highest-rated show!</h3>
-<ol>
-    <% @user.reviews.five_stars.limit(1).each do |review| %>
+<h3>Here are your most recent review.</h3>
+<ul>
+    <% @user.reviews.limit(3).each do |review| %>
         <li>
             <b>Title:</b> <%= review.show.title %>
             <b> - Rating:</b> <%= review.rating %>
@@ -12,7 +12,7 @@
         </li>
         </br>
     <% end %>
-</ol>
+</ul>
 <p>Please select an option from the list.</p>
 
 <ul>
