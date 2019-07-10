@@ -16,18 +16,13 @@ function getShows(){
         method: 'get',
         dataType: 'json'
     }).done(function (data) {
-        // debugger
-        // console.log("the data is", data)
-        let showsDb = data.forEach(function(item) {
-            this.title = item.title;
-            this.genre = item.genre;
-            console.log(showsDb);
+        data.forEach(show => {
+            let allShows = new Show(show)
+            // console.log(allShows);
+            let allShowsHTML = allShows.showHTML()
+            document.getElementById("ajax-index").innerHTML += allShowsHTML
           })
-         
-        })
-        // let showsHTML = showsDb.showHTML()
-        // document.getElementById("ajax-index").innerHTML += showsHTML
-    // })
+    })
 }
 
 class Show {
