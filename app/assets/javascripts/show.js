@@ -1,27 +1,33 @@
 $(function(){
     console.log("js is loading!")
-    listenForClick()
+    getShows()
 })
 
-function listenForClick(){
-    $("button#shows-db").on('click', function (event){
-        event.preventDefault()
-        getShows()
-    })
-}
+// function listenForClick(){
+//     $("button#shows-db").on('click', function (event){
+//         event.preventDefault()
+//         getShows()
+//     })
+// }
 
 function getShows(){
-    // debugger
     $.ajax({
         url: 'http://localhost:3000/',
         method: 'get',
         dataType: 'json'
     }).done(function (data) {
-        console.log("the data is", data)
-        let firstShow = new Show(data[0])
-        let myShowHTML = firstShow.showHTML()
-        document.getElementById("ajax-index").innerHTML += myShowHTML
-    })
+        // debugger
+        // console.log("the data is", data)
+        let showsDb = data.forEach(function(item) {
+            this.title = item.title;
+            this.genre = item.genre;
+            console.log(showsDb);
+          })
+         
+        })
+        // let showsHTML = showsDb.showHTML()
+        // document.getElementById("ajax-index").innerHTML += showsHTML
+    // })
 }
 
 class Show {
@@ -34,10 +40,16 @@ class Show {
 }
 
 Show.prototype.showHTML = function() {
+    let reviews = this.reviews.map(review => {
+        return(`
+            <p>${review.rating} - ${review.comment}</p>
+        `)
+    })
+    
     return(`
         <div>
-            <h3>${this.title}</h3>
-            <p>${this.genre}</p>
+            <h3>${this.title} - ${this.genre}</h3>
+            <p>${reviews}</p>
         </div>
     `)
 }
