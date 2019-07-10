@@ -25,7 +25,7 @@ function getShows(){
 }
 
 class Show {
-    cunstructor (obj){
+    constructor (obj){
         this.id = obj.id
         this.title = obj.title
         this.genre = obj.genre

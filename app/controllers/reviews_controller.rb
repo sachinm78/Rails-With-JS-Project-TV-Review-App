@@ -3,7 +3,8 @@ class ReviewsController < ApplicationController
     
   
     def index
-        special_index
+        @user = current_user
+        @reviews = Review.all
         respond_to do |f|
             f.html {render :index}
             f.json {render json: @reviews}
