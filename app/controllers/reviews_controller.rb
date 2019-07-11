@@ -38,22 +38,38 @@ class ReviewsController < ApplicationController
     def custom_query
         special_index
     end 
-    
-    def special_index
-        @user = current_user
-        @reviews = Review.all
-        five_stars = @reviews.five_stars
-        not_rated = @reviews.not_rated
-    end
-
-    def find_review
-        @review = Review.find_by(id: params[:id])
-    end
-      
+        
 private
 
     def review_params
         params.require(:review).permit(:rating, :comment)
     end
 
+    def find_review
+        @review = Review.find_by(id: params[:id])
+    end
+
+    def special_index
+        @user = current_user
+        @reviews = Review.all
+        five_stars = @reviews.five_stars
+        not_rated = @reviews.not_rated
+    end
 end
+
+# def next
+#     find_show
+#     find_user
+#     @next_show = @show.next
+#     render json: @next_show
+# end
+
+# def show
+#     find_show
+#     find_user
+#     @reviews = current_user.reviews
+#     respond_to do |f|
+#       f.html {render :show}
+#       f.json {render json: @show}
+#     end
+# end
