@@ -9,7 +9,7 @@
     <% @user.shows.each do |show| %>
     
         <li>
-            <b>Title:</b> <%= show.title %> 
+            <b>Title:</b><%= link_to show.title, user_show_path(@user, show) %> 
             <b>- Genre:</b> <%= show.genre %> 
             <b>- Rating:</b> <%= show.reviews.first.rating %> 
             <b>- Comment:</b> <%= show.reviews.first.comment %>
