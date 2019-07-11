@@ -10,7 +10,7 @@
     <% @user.reviews.each do |review| %>
     
         <li>
-            <b>Title:</b> <%= review.show.title %>
+            <b>Title:</b> <%= link_to review.show.title, review_path(review) %>
             <b> - Rating:</b> <%= review.rating %>
             <b> - Comment:</b> <%= review.comment %>
             <%= link_to "Edit This Review", 
