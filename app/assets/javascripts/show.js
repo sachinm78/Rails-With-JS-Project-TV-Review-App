@@ -68,6 +68,19 @@ function getReviews(){
             document.getElementById('js-reviews-index').innerHTML += allReviewsHTML
           })
     })
+
+    $(document).on('click', ".show-link", function(e){
+        e.preventDefault()
+        let id = $(this).attr('data-id')
+        fetch(`/reviews/${id}.json`)
+        .then(res => res.json())
+        .then(review => {
+            let newReview = new Review(review)
+            let showReviewHTML = newReview.formatReviewShow()
+            $("#js-show-review").append(showReviewHTML)
+        })
+    })
+
 }
 
 // *** - gets the next review.
@@ -95,7 +108,7 @@ class Review {
     }
 }
 
-// *** - Review index prototype.
+// *** - Reviews index prototype.
 Review.prototype.formatReviewsIndex = function(){
     let reviewsHtml = `
       <a href="/reviews/${this.id}" data-id="${this.id}" class="show_link">
@@ -104,10 +117,11 @@ Review.prototype.formatReviewsIndex = function(){
     return reviewsHtml
   }
   
-//   Post.prototype.formatShow = function(){
-//     let postHtml = `
-//       <h3>${this.title}</h3>
-//       <button class="next-post">Next</button>
-//     `
-//     return postHtml
-//   }
+// *** - Review show prototype.
+Review.prototype.formatReviewShow = function(){
+    let reviewHtml = `
+      <h3>${this.title}</h3>
+    //   <button class="next-post">Next</button>
+    `
+    return reviewHtml
+}
