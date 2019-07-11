@@ -4,6 +4,10 @@ class ReviewsController < ApplicationController
   
     def index
         special_index
+        respond_to do |f|
+            f.html {render :index}
+            f.json {render json: @reviews}
+          end
     end
 
     def create
@@ -64,7 +68,7 @@ private
 
     def special_index
         @user = current_user
-        @reviews = Review.all
+        @reviews = current_user.reviews
         five_stars = @reviews.five_stars
         not_rated = @reviews.not_rated
     end

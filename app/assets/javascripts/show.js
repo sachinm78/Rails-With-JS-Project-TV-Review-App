@@ -2,16 +2,17 @@
 $(function(){
     console.log("js is loading!")
     getShows()
-    listenForClick()
+    getReviews()
 })
 
 // *** - tests button functionality.
-function listenForClick(){
-    $("button#js-index").on('click', function (event){
-        event.preventDefault()
-        console.log("i clicked the button")
-    })
-}
+// function listenForClick(){
+//     $("button#js-index").on('click', function (event){
+//         event.preventDefault()
+//         console.log("i clicked the button")
+//         getReviews()
+//     })
+// }
 
 // *** - gets shows index data and appends it to home page.
 function getShows(){
@@ -22,7 +23,6 @@ function getShows(){
     }).done(function (data) {
         data.forEach(show => {
             let allShows = new Show(show)
-            // console.log(allShows);
             let allShowsHTML = allShows.showsHTML()
             document.getElementById("ajax-index").innerHTML += allShowsHTML
           })
@@ -55,6 +55,21 @@ Show.prototype.showsHTML = function() {
     `)
 }
 
+// *** - gets reviews index.
+function getReviews(){
+    $.ajax({
+        url: 'http://localhost:3000/reviews',
+        method: 'get',
+        dataType: 'json'
+    }).done(function (data) {
+        data.forEach(review => {
+            let allReviews = new Review(review)
+            let allReviewsHTML = allReviews.formatReviewsIndex()
+            document.getElementById('js-reviews-index').innerHTML += allReviewsHTML
+          })
+    })
+}
+
 // *** - gets the next review.
 // function getNextReview(){
 //     $.ajax({
@@ -80,22 +95,14 @@ class Review {
     }
 }
 
-// *** - Review class prototype.
-Review.prototype.reviewHTML = function() {
-    return(`
-        <div>
-            // <h3>${this.show.title}</h3>
-            <p>${review.rating} - ${review.comment}</p>
-        </div>
-    `)
-}
-
-// Post.prototype.formatIndex = function(){
-//     let postHtml = `
-//       <a href="/posts/${this.id}" data-id="${this.id}" class="show_link"><h1>${this.title}</h1></a>
-//     `
-//     return postHtml
-//   }
+// *** - Review index prototype.
+Review.prototype.formatReviewsIndex = function(){
+    let reviewsHtml = `
+      <a href="/reviews/${this.id}" data-id="${this.id}" class="show_link">
+      <h3>${this.title}</h3></a>
+    `
+    return reviewsHtml
+  }
   
 //   Post.prototype.formatShow = function(){
 //     let postHtml = `

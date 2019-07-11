@@ -7,17 +7,3 @@
 <h1><%= current_user.username %>'s Reviews Index</h1>
 <button id="js-index">Reviews Index</button>
 <div id="js-reviews-index"></div>
-
-<ol>
-    <% @user.reviews.each do |review| %>
-    
-        <li>
-            <b>Title:</b> <%= link_to review.show.title, review_path(review) %>
-            <b> - Rating:</b> <%= review.rating %>
-            <b> - Comment:</b> <%= review.comment %>
-            <%= link_to "Edit This Review", 
-            edit_review_path(review) %>
-        </li>
-        </br>
-    <% end %>
-</ol>
