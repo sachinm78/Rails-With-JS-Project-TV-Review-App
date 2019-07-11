@@ -30,9 +30,20 @@ class ReviewsController < ApplicationController
         redirect_to reviews_path(@review)
     end
 
+    def next
+        find_review
+        find_user
+        @next_review = @review.next
+        render json: @next_review
+    end
+    
     def show
-        custom_query
-        render :custom_query
+        find_review
+        find_user
+        respond_to do |f|
+          f.html {render :show}
+          f.json {render json: @review}
+        end
     end
 
     def custom_query
@@ -56,20 +67,3 @@ private
         not_rated = @reviews.not_rated
     end
 end
-
-# def next
-#     find_show
-#     find_user
-#     @next_show = @show.next
-#     render json: @next_show
-# end
-
-# def show
-#     find_show
-#     find_user
-#     @reviews = current_user.reviews
-#     respond_to do |f|
-#       f.html {render :show}
-#       f.json {render json: @show}
-#     end
-# end

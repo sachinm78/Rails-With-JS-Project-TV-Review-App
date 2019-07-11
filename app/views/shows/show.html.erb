@@ -7,5 +7,3 @@
 <h3>Genre: <%= @show.genre %></h3> 
 <h3>Rating: <%= @show.reviews.first.rating %></h3>
 <h3>Comment: <%= @show.reviews.first.comment %></h3>
-
-<%= button_tag 'Next', class: 'js-next', data: {user_id: @user.id, id: @show.id} %>
