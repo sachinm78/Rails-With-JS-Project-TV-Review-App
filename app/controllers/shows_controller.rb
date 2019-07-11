@@ -25,12 +25,21 @@ class ShowsController < ApplicationController
         end
     end
 
+    def next
+        @next_show = @show.next
+        render json: @next_show
+    end
+    
     def show
         find_show
-        @user = current_user
+        find_user
         @reviews = current_user.reviews
+        respond_to do |f|
+          f.html {render :show}
+          f.json {render json: @show}
+        end
     end
-
+    
     def edit
         find_show
         find_user
