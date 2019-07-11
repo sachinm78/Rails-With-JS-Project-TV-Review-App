@@ -25,19 +25,10 @@ class ShowsController < ApplicationController
         end
     end
 
-    def next
-        @next_show = @show.next
-        render json: @next_show
-    end
-    
     def show
         find_show
-        find_user
+        @user = current_user
         @reviews = current_user.reviews
-        respond_to do |f|
-          f.html {render :show}
-          f.json {render json: @show}
-        end
     end
     
     def edit
@@ -67,18 +58,18 @@ class ShowsController < ApplicationController
         redirect_to user_shows_path 
     end
 
+private
+    
+    def show_params
+        params.require(:show).permit(:title, :genre)
+    end
+
     def find_user
         @user = User.find_by(id: params[:user_id])
     end
 
     def find_show
         @show = Show.find_by(id: params[:id])
-    end
-
-private
-    
-    def show_params
-        params.require(:show).permit(:title, :genre)
     end
     
 end
