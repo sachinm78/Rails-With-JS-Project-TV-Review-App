@@ -63,8 +63,8 @@ Show.prototype.showsHTML = function() {
 class Review {
     constructor (obj){
         this.id = obj.id
-        this.title = obj.title
-        this.genre = obj.genre
+        this.title = obj.show.title
+        this.genre = obj.show.genre
         this.rating = obj.rating
         this.comment = obj.comment
     }
@@ -72,6 +72,7 @@ class Review {
 
 Review.prototype.reviewHTML = function() {
     let id = this.id
+    let title = this.show.title
     return(`
         <div>
             // <h3>${this.title}</h3>
