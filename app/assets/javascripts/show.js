@@ -1,14 +1,15 @@
 $(function(){
     console.log("js is loading!")
     getShows()
+    listenForClick()
 })
 
-// function listenForClick(){
-//     $("button#shows-db").on('click', function (event){
-//         event.preventDefault()
-//         getShows()
-//     })
-// }
+function listenForClick(){
+    $("button.js-next").on('click', function (event){
+        event.preventDefault()
+        console.log("i clicked the button")
+    })
+}
 
 function getShows(){
     $.ajax({
@@ -49,12 +50,32 @@ Show.prototype.showsHTML = function() {
     `)
 }
 
-function getReview(){
-    $.ajax({
-        url: 'http://localhost:3000/',
-        method: 'get',
-        dataType: 'json'
-    }).done(function (data) {
-        console.log(data)            
-          })
+// function getReview(){
+//     $.ajax({
+//         url: 'http://localhost:3000/reviews/:id',
+//         method: 'get',
+//         dataType: 'json'
+//     }).done(function (data) {
+//         console.log(data)            
+//           })
+// }
+
+class Review {
+    constructor (obj){
+        this.id = obj.id
+        this.title = obj.title
+        this.genre = obj.genre
+        this.rating = obj.rating
+        this.comment = obj.comment
+    }
+}
+
+Review.prototype.reviewHTML = function() {
+    let id = this.id
+    return(`
+        <div>
+            // <h3>${this.title}</h3>
+            <p>${review.rating} - ${review.comment}</p>
+        </div>
+    `)
 }
