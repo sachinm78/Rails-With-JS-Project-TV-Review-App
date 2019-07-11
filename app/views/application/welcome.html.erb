@@ -1,6 +1,8 @@
 <h1>Welcome, <%= @user.username %>!</h1>
 
-<h3>Here are your most recent review.</h3>
+<h3>Your reviews, at a glance.</h3>
+<div id="ajax-show"></div>
+
 <ul>
     <% @user.reviews.limit(3).each do |review| %>
         <li>
