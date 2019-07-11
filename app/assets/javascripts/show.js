@@ -1,16 +1,19 @@
+// *** - calls functions when page loads.
 $(function(){
     console.log("js is loading!")
     getShows()
-    listenForClick()
+    // getReview()
 })
 
-function listenForClick(){
-    $("button.js-next").on('click', function (event){
-        event.preventDefault()
-        console.log("i clicked the button")
-    })
-}
+// *** - tests button functionality.
+// function listenForClick(){
+//     $("button.js-next").on('click', function (event){
+//         event.preventDefault()
+//         console.log("i clicked the button")
+//     })
+// }
 
+// *** - gets shows index data and appends it to home page.
 function getShows(){
     $.ajax({
         url: 'http://localhost:3000/',
@@ -26,6 +29,7 @@ function getShows(){
     })
 }
 
+// *** - Show class constructor.
 class Show {
     constructor (obj){
         this.id = obj.id
@@ -35,6 +39,7 @@ class Show {
     }
 }
 
+// *** - Show class prototype.
 Show.prototype.showsHTML = function() {
     let reviews = this.reviews.map(review => {
         return(`
@@ -50,16 +55,21 @@ Show.prototype.showsHTML = function() {
     `)
 }
 
-// function getReview(){
+// *** - gets the next review.
+// function getNextReview(){
 //     $.ajax({
-//         url: 'http://localhost:3000/reviews/:id',
+//         url: `http://localhost:3000/reviews/${this.id}`,
 //         method: 'get',
 //         dataType: 'json'
 //     }).done(function (data) {
-//         console.log(data)            
-//           })
+//         $("button.js-next").on('click', function () {
+//             let next_review = data.reviewHTML()
+//             return next_review        
+//         })
+//     })      
 // }
 
+// *** - Review class constructor.
 class Review {
     constructor (obj){
         this.id = obj.id
@@ -70,12 +80,11 @@ class Review {
     }
 }
 
+// *** - Review class prototype.
 Review.prototype.reviewHTML = function() {
-    let id = this.id
-    let title = this.show.title
     return(`
         <div>
-            // <h3>${this.title}</h3>
+            // <h3>${this.show.title}</h3>
             <p>${review.rating} - ${review.comment}</p>
         </div>
     `)
