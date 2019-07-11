@@ -19,7 +19,7 @@ function getShows(){
         data.forEach(show => {
             let allShows = new Show(show)
             // console.log(allShows);
-            let allShowsHTML = allShows.showHTML()
+            let allShowsHTML = allShows.showsHTML()
             document.getElementById("ajax-index").innerHTML += allShowsHTML
           })
     })
@@ -34,7 +34,7 @@ class Show {
     }
 }
 
-Show.prototype.showHTML = function() {
+Show.prototype.showsHTML = function() {
     let reviews = this.reviews.map(review => {
         return(`
             <p>${review.rating} - ${review.comment}</p>
@@ -47,4 +47,14 @@ Show.prototype.showHTML = function() {
             <p>${reviews}</p>
         </div>
     `)
+}
+
+function getReview(){
+    $.ajax({
+        url: 'http://localhost:3000/',
+        method: 'get',
+        dataType: 'json'
+    }).done(function (data) {
+        console.log(data)            
+          })
 }
