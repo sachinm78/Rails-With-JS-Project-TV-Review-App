@@ -32,14 +32,16 @@ class ReviewsController < ApplicationController
 
     def next
         find_review
-        find_user
+        @show = Show.find_by(id: params[:id])
+        @user = current_user
         @next_review = @review.next
         render json: @next_review
     end
     
     def show
         find_review
-        find_user
+        @show = Show.find_by(id: params[:id])
+        @user = current_user
         respond_to do |f|
           f.html {render :show}
           f.json {render json: @review}

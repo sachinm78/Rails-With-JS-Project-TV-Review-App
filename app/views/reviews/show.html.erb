@@ -1,0 +1,11 @@
+<ul>
+    <li><%= link_to "Your Shows", user_shows_path(@user) %></li>
+    <li><%= link_to "Your Reviews", reviews_path %></li>
+</ul>
+
+<h1>Title: <%= @show.title %></h1>
+<h3>Genre: <%= @show.genre %></h3> 
+<h3>Rating: <%= @show.reviews.first.rating %></h3>
+<h3>Comment: <%= @show.reviews.first.comment %></h3>
+
+<%= button_tag 'Next', class: 'js-next', data: {id: @review.id} %>

@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   end
 
   get '/custom_query', to: 'reviews#custom_query'
-  get 'users/:id/shows/:id/next', to: 'shows#next'
+  get 'reviews/:id/next', to: 'reviews#next'
 end
