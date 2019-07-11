@@ -2,16 +2,16 @@
 $(function(){
     console.log("js is loading!")
     getShows()
-    // getReview()
+    listenForClick()
 })
 
 // *** - tests button functionality.
-// function listenForClick(){
-//     $("button.js-next").on('click', function (event){
-//         event.preventDefault()
-//         console.log("i clicked the button")
-//     })
-// }
+function listenForClick(){
+    $("button#js-index").on('click', function (event){
+        event.preventDefault()
+        console.log("i clicked the button")
+    })
+}
 
 // *** - gets shows index data and appends it to home page.
 function getShows(){
@@ -62,7 +62,7 @@ Show.prototype.showsHTML = function() {
 //         method: 'get',
 //         dataType: 'json'
 //     }).done(function (data) {
-//         $("button.js-next").on('click', function () {
+//         $("button#js-next").on('click', function () {
 //             let next_review = data.reviewHTML()
 //             return next_review        
 //         })
@@ -89,3 +89,18 @@ Review.prototype.reviewHTML = function() {
         </div>
     `)
 }
+
+// Post.prototype.formatIndex = function(){
+//     let postHtml = `
+//       <a href="/posts/${this.id}" data-id="${this.id}" class="show_link"><h1>${this.title}</h1></a>
+//     `
+//     return postHtml
+//   }
+  
+//   Post.prototype.formatShow = function(){
+//     let postHtml = `
+//       <h3>${this.title}</h3>
+//       <button class="next-post">Next</button>
+//     `
+//     return postHtml
+//   }
