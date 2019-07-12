@@ -124,7 +124,8 @@ Review.prototype.formatReviewsIndex = function(){
 // *** - Review show prototype.
 Review.prototype.formatReviewShow = function(){
     let reviewHtml = `
-      <h3>${this.title}</h3>
+      <h3>${this.title}: ${this.genre}</h3>
+      <p>${this.rating} - ${this.comment}</p>
     `
     return reviewHtml
 }
