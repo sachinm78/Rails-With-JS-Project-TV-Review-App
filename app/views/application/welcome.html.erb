@@ -1,9 +1,8 @@
 <h1>Welcome, <%= @user.username %>!</h1>
 
-<h3>Your reviews, at a glance.</h3>
-
+<h3>Here are your reviews.</h3>
 <ul>
-    <% @user.reviews.limit(3).each do |review| %>
+    <% @user.reviews.each do |review| %>
         <li>
             <b>Title:</b> <%= review.show.title %>
             <b> - Rating:</b> <%= review.rating %>

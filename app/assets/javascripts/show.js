@@ -88,9 +88,9 @@ function showReview(){
         })
     })
 
-    $(document).on('click', 'next-review', function() {
-        let id = $(this).attr('data-id')
-        fetch(`reviews/${id}/next`)
+    $(document).on('click', 'edit-review', function() {
+        let id = $(this.id).attr('data-id')
+        window.location.href = `/reviews/${id}/edit`
         
     })
 }
@@ -120,7 +120,7 @@ Review.prototype.formatReviewShow = function(){
     let reviewHtml = `
       <h3>${this.title}: ${this.genre}</h3>
       <p>${this.rating} - ${this.comment}</p>
-      <button class="next-review">Next</button>
+      <button data-id="${this.id}" class="edit-review">Edit Review</button>
     `
     return reviewHtml
 }
