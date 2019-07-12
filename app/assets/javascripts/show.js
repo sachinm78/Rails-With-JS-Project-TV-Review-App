@@ -3,6 +3,7 @@ $(function(){
     console.log("js is loading!")
     getShows()
     getReviews()
+    showReview()
 })
 
 // *** - tests button functionality.
@@ -69,18 +70,21 @@ function getReviews(){
           })
     })
 
-    $(document).on('click', ".show-link", function(e){
+}
+
+function showReview(){
+    $(document).on('click', ".show_link", function(e){
         e.preventDefault()
+        $('#app-container').html('')
         let id = $(this).attr('data-id')
         fetch(`/reviews/${id}.json`)
         .then(res => res.json())
         .then(review => {
             let newReview = new Review(review)
             let showReviewHTML = newReview.formatReviewShow()
-            $("#js-show-review").append(showReviewHTML)
+            $("#app-container").append(showReviewHTML)
         })
     })
-
 }
 
 // *** - gets the next review.
@@ -121,7 +125,6 @@ Review.prototype.formatReviewsIndex = function(){
 Review.prototype.formatReviewShow = function(){
     let reviewHtml = `
       <h3>${this.title}</h3>
-    //   <button class="next-post">Next</button>
     `
     return reviewHtml
 }
