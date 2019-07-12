@@ -21,6 +21,7 @@ class ReviewsController < ApplicationController
 
     def edit
         find_review
+        @user = current_user
         if current_user.reviews.include?(@review)
             render :edit
         else 
@@ -30,6 +31,7 @@ class ReviewsController < ApplicationController
 
     def update
         find_review
+        @user = current_user
         @review.update(review_params)
         redirect_to reviews_path(@review)
     end
