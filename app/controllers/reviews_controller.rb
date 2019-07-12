@@ -4,6 +4,9 @@ class ReviewsController < ApplicationController
   
     def index
         special_index
+        find_review
+        @user = current_user
+        @show = Show.find_by(id: params[:id])
         respond_to do |f|
             f.html {render :index}
             f.json {render json: @reviews}
@@ -32,8 +35,9 @@ class ReviewsController < ApplicationController
     def update
         find_review
         @user = current_user
+        @show = Show.find_by(id: params[:id])
         @review.update(review_params)
-        redirect_to reviews_path(@review)
+        redirect_to user_show_path(@show)
     end
 
     def next

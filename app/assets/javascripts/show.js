@@ -4,6 +4,7 @@ $(function(){
     getShows()
     getReviews()
     showReview()
+    
 })
 
 // *** - tests button functionality.
@@ -72,6 +73,7 @@ function getReviews(){
 
 }
 
+// *** - shows review without refresh, next button is not working.
 function showReview(){
     $(document).on('click', ".show_link", function(e){
         e.preventDefault()
@@ -122,3 +124,21 @@ Review.prototype.formatReviewShow = function(){
     `
     return reviewHtml
 }
+
+// // *** - review form without refresh
+// function submitReview() {
+//     $('#review_form').on('submit', function(e) {
+//         e.preventDefault()
+//         let id = $(this).attr('data-id')
+
+//         let values = $(this).serialize()
+
+//         $.post(`/reviews/${id}`, values).done(function(data) {
+//             $('#app-container').html('')
+//             let updateReview = data.formatReviewShow()
+//             $("#app-container").append(updateReview)
+            
+//             })
+//     })
+// }
+
