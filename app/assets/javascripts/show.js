@@ -4,7 +4,7 @@ $(function(){
     getShows()
     getReviews()
     showReview()
-    
+    // newShow()
 })
 
 // *** - tests button functionality.
@@ -125,20 +125,19 @@ Review.prototype.formatReviewShow = function(){
     return reviewHtml
 }
 
-// // *** - review form without refresh
-// function submitReview() {
-//     $('#review_form').on('submit', function(e) {
-//         e.preventDefault()
-//         let id = $(this).attr('data-id')
+// *** - new show form with js
+function newShow() {
+    $('#new_show_form').on('submit', function(e) {
+        e.preventDefault()
+        
+        let values = $(this).serialize()
 
-//         let values = $(this).serialize()
-
-//         $.post(`/reviews/${id}`, values).done(function(data) {
-//             $('#app-container').html('')
-//             let updateReview = data.formatReviewShow()
-//             $("#app-container").append(updateReview)
+        $.post(`/users/${user.id}/shows/${id}`, values).done(function(data) {
+            $('#app-container').html('')
+            // let updateReview = data.formatReviewShow()
+            // $("#app-container").append(updateReview)
             
-//             })
-//     })
-// }
+            })
+    })
+}
 

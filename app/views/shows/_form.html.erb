@@ -4,7 +4,7 @@
   <%end%>
 <%end%>
 
-<%= form_for [user, show] do |f| %>
+<%= form_for([user, show], html: {id: :new_show_form}) do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %><br />
     <%= f.label :genre %>
