@@ -85,21 +85,13 @@ function showReview(){
             $("#app-container").append(showReviewHTML)
         })
     })
-}
 
-// *** - gets the next review.
-// function getNextReview(){
-//     $.ajax({
-//         url: `http://localhost:3000/reviews/${this.id}`,
-//         method: 'get',
-//         dataType: 'json'
-//     }).done(function (data) {
-//         $("button#js-next").on('click', function () {
-//             let next_review = data.reviewHTML()
-//             return next_review        
-//         })
-//     })      
-// }
+    $(document).on('click', 'next-review', function() {
+        let id = $(this).attr('data-id')
+        fetch(`reviews/${id}/next`)
+        
+    })
+}
 
 // *** - Review class constructor.
 class Review {
@@ -126,6 +118,7 @@ Review.prototype.formatReviewShow = function(){
     let reviewHtml = `
       <h3>${this.title}: ${this.genre}</h3>
       <p>${this.rating} - ${this.comment}</p>
+      <button class="next-review">Next</button>
     `
     return reviewHtml
 }

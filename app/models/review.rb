@@ -18,7 +18,7 @@ class Review < ApplicationRecord
     if review
       review
     else
-      Post.first
+      Review.first
     end
   end
 
