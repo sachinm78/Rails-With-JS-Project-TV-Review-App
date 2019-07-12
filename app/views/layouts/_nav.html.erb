@@ -5,6 +5,7 @@
     <li><%= link_to "Your Shows", user_shows_path(@user) %></li>
     <li><%= link_to "Add a New Show", new_user_show_path(@user) %></li>
     <li><%= link_to "Your Reviews", reviews_path %></li>
+    <li><%= link_to "Five Star - Not Rated Shows", custom_query_path %>
   <% else %>
     <li><%= link_to "Sign up", new_user_registration_path %></li>
     <li><%= link_to "Sign in", new_user_session_path %></li>
