@@ -5,8 +5,7 @@ class ReviewsController < ApplicationController
     def index
         special_index
         find_review
-        @user = current_user
-        @show = Show.find_by(id: params[:id])
+        find_show
         respond_to do |f|
             f.html {render :index}
             f.json {render json: @reviews}
@@ -24,7 +23,6 @@ class ReviewsController < ApplicationController
 
     def edit
         find_review
-        @user = current_user
         if current_user.reviews.include?(@review)
             render :edit
         else 
@@ -34,24 +32,22 @@ class ReviewsController < ApplicationController
 
     def update
         find_review
-        @user = current_user
-        @show = Show.find_by(id: params[:id])
+        find_show
         @review.update(review_params)
         redirect_to user_show_path(@show)
     end
 
-    def next
-        find_review
-        @show = Show.find_by(id: params[:id])
-        @user = current_user
-        @next_review = @review.next
-        render json: @next_review
-    end
+    #### Next button was removed
+    # def next
+    #     find_review
+    #     find_show
+    #     @next_review = @review.next
+    #     render json: @next_review
+    # end
     
     def show
         find_review
-        @show = Show.find_by(id: params[:id])
-        @user = current_user
+        find_show
         respond_to do |f|
           f.html {render :show}
           f.json {render json: @review}
@@ -69,7 +65,12 @@ private
     end
 
     def find_review
+        @user = current_user
         @review = Review.find_by(id: params[:id])
+    end
+
+    def find_show
+        @show = Show.find_by(id: params[:id])
     end
 
     def special_index
