@@ -4,7 +4,7 @@ $(function(){
     getShows()
     getReviews()
     showReview()
-    // newShow()
+    newShow()
 })
 
 // *** - tests button functionality.
@@ -57,6 +57,24 @@ Show.prototype.showsHTML = function() {
     `)
 }
 
+// *** - new show form with js
+function newShow() {
+    $('#new_show_form').on('submit', function(e) {
+        e.preventDefault()
+        
+        let values = $(this).serialize()
+        const userId = document.location.href.match(/\d+/g)[1];
+        
+        $.post(`/users/${userId}/shows`, values).done(function(data) {
+            // console.log(data)
+            // $('#app-container').html('')
+                        
+            })
+    })
+}
+
+
+
 // *** - gets reviews index.
 function getReviews(){
     $.ajax({
@@ -73,7 +91,8 @@ function getReviews(){
 
 }
 
-// *** - shows review without refresh, next button is not working.
+// *** - shows review without refresh
+// *** - edit button is not responding.
 function showReview(){
     $(document).on('click', ".show_link", function(e){
         e.preventDefault()
@@ -123,21 +142,5 @@ Review.prototype.formatReviewShow = function(){
       <button data-id="${this.id}" class="edit-review">Edit Review</button>
     `
     return reviewHtml
-}
-
-// *** - new show form with js
-function newShow() {
-    $('#new_show_form').on('submit', function(e) {
-        e.preventDefault()
-        
-        let values = $(this).serialize()
-
-        $.post(`/users/${user.id}/shows/${id}`, values).done(function(data) {
-            $('#app-container').html('')
-            // let updateReview = data.formatReviewShow()
-            // $("#app-container").append(updateReview)
-            
-            })
-    })
 }
 
