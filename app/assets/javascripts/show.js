@@ -73,8 +73,6 @@ function newShow() {
     })
 }
 
-
-
 // *** - gets reviews index.
 function getReviews(){
     $.ajax({
