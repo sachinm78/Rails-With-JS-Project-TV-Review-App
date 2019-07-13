@@ -93,7 +93,6 @@ function getReviews(){
 }
 
 // *** - shows review without refresh
-// *** - edit button is not responding.
 function showReview(){
     $(document).on('click', ".show_link", function(e){
         e.preventDefault()
@@ -107,12 +106,12 @@ function showReview(){
             $("#app-container").append(showReviewHTML)
         })
     })
-
-    $(document).on('click', 'edit-review', function() {
-        let id = $(this.id).attr('data-id')
-        window.location.href = `/reviews/${id}/edit`
+    // *** - edit button is not responding.
+    // $(document).on('click', 'edit-review', function() {
+    //     let id = $(this.id).attr('data-id')
+    //     window.location.href = `/reviews/${id}/edit`
         
-    })
+    // })
 }
 
 // *** - Review class constructor.
@@ -140,7 +139,6 @@ Review.prototype.formatReviewShow = function(){
     let reviewHtml = `
       <h3>${this.title}: ${this.genre}</h3>
       <p>${this.rating} - ${this.comment}</p>
-      <button data-id="${this.id}" class="edit-review">Edit Review</button>
     `
     return reviewHtml
 }

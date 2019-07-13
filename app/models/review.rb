@@ -12,14 +12,14 @@ class Review < ApplicationRecord
     all.where("comment = ?", "Add a comment.") 
   end
 
-  def next
-    review = Review.where("id > ?", id).first
+  # def next
+  #   review = Review.where("id > ?", id).first
 
-    if review
-      review
-    else
-      Review.first
-    end
-  end
+  #   if review
+  #     review
+  #   else
+  #     Review.first
+  #   end
+  # end
 
 end
