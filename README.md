@@ -1,6 +1,6 @@
 # Rails-With-JS-Project-TV-Review-App
 
-TV-Review-App is a simple Rails web application where users can create an account and rate and review their favorite shows. This application has Create-Read-Update-Delete(CRUD) functionality, allowing users to edit and update their shows and reviews as needed.  
+TV-Review-App is a simple Rails web application with some javascript front-end features.  With this app, users can create an account and rate and review their favorite shows. This application has Create-Read-Update-Delete(CRUD) functionality, allowing users to edit and update their shows and reviews as needed.  
 
 License information: MIT (see LICENSE)
 
@@ -9,11 +9,13 @@ License information: MIT (see LICENSE)
 This app is free to use.  To install this app: 
 
     1. Fork and clone this repository 
-    (ssh key: git@github.com:sachinm78/Rails-With-JS-Project-TV-Review-App.git)
+    ssh key: git@github.com:sachinm78/Rails-With-JS-Project-TV-Review-App.git
+    or 
+    https: https://github.com/sachinm78/Rails-With-JS-Project-TV-Review-App.git
     
     2. Make sure you are in the proper directory in your terminal. Then run the following command "bundle install" to install all necessary gem files.  You can review the files and versions to be installed in the Gemfile.  
     
-    3. Run the command "rake db:migrate" to create Active Record migrations. 
+    3. Run the command "rake db:migrate" to create Active Record migrations. You can also run "rake db:seed" to add a small database of shows.
     
     4. Once migrations are complete, run the command "rails s" to create a local server.  Visit the URL provided (http://localhost:3000/) and create an account or login to your existing account.  You can also sign up and/or login using your existing Github account.
 
