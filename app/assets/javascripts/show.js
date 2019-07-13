@@ -96,8 +96,10 @@ function getReviews(){
 function showReview(){
     $(document).on('click', ".show_link", function(e){
         e.preventDefault()
-        $('#app-container').html('')
         let id = $(this).attr('data-id')
+        
+        history.pushState(null, null, `reviews/${id}`)
+        $('#app-container').html('')
         fetch(`/reviews/${id}.json`)
         .then(res => res.json())
         .then(review => {
