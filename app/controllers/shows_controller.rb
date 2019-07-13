@@ -19,10 +19,7 @@ class ShowsController < ApplicationController
         @show.save    
         if @show.save
             @show.reviews.create(user_id: @user.id)
-            respond_to do |f|
-                f.html {redirect_to user_show_path(@user, @show)}
-                f.json {render json: @show}
-            end
+            render json: @show
         else
             render :new
         end

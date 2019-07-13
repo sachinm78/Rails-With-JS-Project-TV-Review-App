@@ -66,9 +66,12 @@ function newShow() {
         const userId = document.location.href.match(/\d+/g)[1];
         
         $.post(`/users/${userId}/shows`, values).done(function(data) {
-            // console.log(data)
-            // $('#app-container').html('')
-                        
+            $('#app-container').html('')
+            
+            let newShow = new Show(data)
+            let showHTML = newShow.showsHTML()
+            
+            $('#app-container').append(showHTML) 
             })
     })
 }
