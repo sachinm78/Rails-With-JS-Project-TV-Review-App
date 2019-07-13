@@ -1,19 +1,21 @@
-<h1>Welcome, <%= @user.username %>!</h1>
+<div>
+    <h1>Welcome, <%= @user.username %>!</h1>
 
-<h3>Here are your reviews.</h3>
-<ul>
-    <% @user.reviews.each do |review| %>
-        <li>
-            <b>Title:</b> <%= review.show.title %>
-            <b> - Rating:</b> <%= review.rating %>
-            <b> - Comment:</b> <%= review.comment %>
-            <%= link_to "Edit This Review", 
-            edit_review_path(review) %>
-        </li>
-        </br>
-    <% end %>
-</ul>
+    <h3>Here are your reviews.</h3>
+    <ul>
+        <% @user.reviews.each do |review| %>
+            <li>
+                <b>Title:</b> <%= review.show.title %>
+                <b> - Rating:</b> <%= review.rating %>
+                <b> - Comment:</b> <%= review.comment %>
+                <%= link_to "Edit This Review", 
+                edit_review_path(review) %>
+            </li>
+            </br>
+        <% end %>
+    </ul>
 
-<h2>Shows Data Base</h2>
+    <h2>Shows Data Base</h2>
 
-<div id="ajax-index"></div>
+    <div id="ajax-index"></div>
+</div>

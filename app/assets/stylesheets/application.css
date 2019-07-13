@@ -29,3 +29,7 @@
   .field_with_errors input[type='number']{
     border: 1px solid red;
   }
+
+  div {
+    padding: 0px 0px 10px 10px;
+  }
