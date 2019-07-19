@@ -1,7 +1,7 @@
 // *** - calls functions when page loads.
 $(function(){
     console.log("js is loading!")
-    getShows()
+    getShowsByTitle()
     getReviews()
     showReview()
     newShow()
@@ -16,20 +16,34 @@ $(function(){
 //     })
 // }
 
-// *** - gets shows index data and appends it to home page.
-function getShows(){
+// *** - gets shows index data sorted by title and appends it to home page.
+function getShowsByTitle(){
     $.ajax({
         url: 'http://localhost:3000/',
         method: 'get',
         dataType: 'json'
     }).done(function (data) {
+        data = data.sort(function(a, b) {
+            var titleA = a.title.toUpperCase(); 
+            var titleB = b.title.toUpperCase(); 
+            if (titleA < titleB) {
+              return -1;
+            }
+            if (titleA > titleB) {
+              return 1;
+            }
+            return data;
+        });
+        // console.log(data)
         data.forEach(show => {
             let allShows = new Show(show)
             let allShowsHTML = allShows.showsHTML()
             document.getElementById("ajax-index").innerHTML += allShowsHTML
           })
     })
-}
+   
+}                    
+   
 
 // *** - Show class constructor.
 class Show {
@@ -56,6 +70,7 @@ Show.prototype.showsHTML = function() {
         </div>
     `)
 }
+
 
 // *** - new show form with js
 function newShow() {
